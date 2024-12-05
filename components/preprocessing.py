@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import display
 ### Combines dataframe with the target series
 def concat_df_a_target(df,target):
