@@ -1,3 +1,5 @@
+import pandas as pd
+import display
 ### Combines dataframe with the target series
 def concat_df_a_target(df,target):
     return pd.concat([df,target], axis=1)
@@ -163,6 +165,5 @@ def feature_engineering(df,tst,Target_series):
     cat_cols = train.select_dtypes(exclude='number').columns
     train = train.drop(cat_cols,axis=1)
     test = test.drop(cat_cols,axis=1)
-    
     
     return train, test 
