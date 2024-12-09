@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 
+# Find Kbest categorical features based on the chi2 formula 
 def Kbest(cat_dummies):
     # Ten features with highest chi-squared statistics are selected
     chi2_features = SelectKBest(chi2, k=10)
@@ -25,3 +26,9 @@ def Kbest(cat_dummies):
 
     # Return the dataframe with only the columns that have the highest chi2 square correlation
     return cat_dummies[list(feature_scores[0:10].Feature)].reset_index().drop('index',axis=1)
+
+# check the correlation of every feature to the target column
+def corr_to_target(train, target_column, threshold=0.1):
+    corr_matrix = train.corr()
+    target_correlations = corr_matrix[target_column].abs()
+    return target_correlations
