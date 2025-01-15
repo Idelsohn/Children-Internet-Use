@@ -37,12 +37,14 @@ and there are a lot of cases of Multicollinearity, which can cause overfitting. 
 ![image](https://github.com/user-attachments/assets/6693eec8-a76a-4959-9f20-291a8ffdf22f)
 
 ## The Model
-For the final solution, I used an ensemble of models consisting of XGBoost, LightGBM, and CatBoost. After experimenting with each on its own, I concluded that this composition provides the most robust solution.
-The models' performances were measured by the QWK metric (quadratic weighted kappa) Which measures the agreement between two outcomes. It typically varies from 0 (random agreement) to 1 (complete agreement). The metric is well suited for the task because it takes into account the size of the error.
+For the final solution, I used an ensemble of regression models consisting of XGBoost, LightGBM, and CatBoost. After experimenting with each on its own, I concluded that this composition provides the most robust solution.
+The models' performances were measured by the QWK metric (Quadratic Weighted Kappa) Which measures the agreement between two outcomes. It typically varies from 0 (random agreement) to 1 (complete agreement). The metric is well suited for the task because it takes into account the size of the error.
 I have tuned the hyperparameters for each model individually using optuna in this [notebook](https://github.com/Idelsohn/Children-Internet-Use/blob/main/notebooks/Problematic_Interent_Use_HyperParametersTuning.ipynb).
 
 ## Prediction and Evaluation
-To evaluate the results of the model I have used two techniques
+To evaluate the model's performance, I employed a 5-fold cross-validation strategy for Out-of-Fold (OOF) predictions. This approach divides the data into five equal parts, where each part is used as a holdout set for evaluation while the remaining four parts are used for training. It helped to provide a more robust solution. In addition, I optimized the classification thresholds. The default thresholds for class predictions often did not maximize the score, likely because of the QWK metric. By playing and adjusting these thresholds, there was a significant improvement in the model's performance.
+In the end, while I presented both scores, for the final predictions I used the optimized thresholds as they showed superior results.
+
 ![image](https://github.com/user-attachments/assets/5e6c4dbc-90ca-41ec-a22c-ec9bc80e8415)
 
 
