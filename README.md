@@ -3,6 +3,7 @@
 Goal: Develop a predictive model that analyzes children's physical activity and fitness data to identify early signs of problematic internet use.
 </br>
 The results were to my satisfaction as I managed to earn my first medal and was in the top 3% of all submissions (out of 3600 groups) 
+
 ![image](https://github.com/user-attachments/assets/6ad8d31f-5fe8-4f50-8917-861399525884)
 
 ## Dataset
